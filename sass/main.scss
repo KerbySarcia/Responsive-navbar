@@ -1,0 +1,106 @@
+$navColor : rgb(31, 30, 30);
+$ff : monospace;
+$ffWeight : 600;
+$fontColor : white;
+
+@mixin flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: $ff;
+    color: $fontColor;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav{
+    background-color: $navColor;
+    @include flex();
+    flex-direction: column;
+
+    .logo-search{
+        @include flex();
+        justify-content: space-between;
+        width: 100%;
+        padding: 1rem;
+
+        .logo{
+            margin-right: auto
+        }
+
+        .menu-hamburger{
+            cursor: pointer;
+            transition: all 0.3s linear;
+            &:hover{
+                transform: rotate(180deg);
+            }
+        }
+        
+        #search{
+            margin: 1rem;
+            color: $navColor;
+        }
+    }
+
+
+    .nav-link{
+        text-align: center;
+        background-color: $navColor;
+        position: fixed;
+        top: 5rem;
+        width: 100%;
+        transform: translate(100%);
+        transition: all 0.3s linear;
+
+
+        li{
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s linear;
+
+            &:hover{
+                background-color: $fontColor;
+                a{
+                    color: $navColor;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+@media (min-width: 59.53rem)
+{
+    nav{
+        @include flex();
+        flex-direction: row;
+        padding: 0.5rem;
+
+        .menu-hamburger{
+            display: none;
+        }
+
+        .nav-link{
+            position: inherit;
+            @include flex();
+            transform: translate(0);
+            width: 40%;
+        }
+
+        .logo-search{
+            padding: 0;
+            margin-right: auto;
+        }
+    }
+}
